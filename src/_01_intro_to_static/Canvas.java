@@ -57,6 +57,8 @@ public class Canvas {
 
     public void addCircle(Circle circle) {
         circles.add(circle);
+        System.out.println("circle radius = " + circle.radius);
+    	System.out.println("circle color = " + circle.color);
 
         // Must place after adding new circle
         // no size - 1 to number starting from 1
@@ -81,7 +83,7 @@ public class Canvas {
 
         radiusSlider.addChangeListener((e) -> {
             int value = radiusSlider.getValue();
-            radiusSliderLabel.setText("#" + num + " Size " + String.format("%3s", value));
+            radiusSliderLabel.setText("#" + num + " Radius " + String.format("%3s", value));
 
             circles.get(num-1).radius = value;
             frame.repaint();
