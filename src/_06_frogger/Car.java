@@ -15,8 +15,16 @@ public class Car extends PApplet {
 		this.speed = speed;
 	}
 	
-	void display() {
-	    fill(0,255,0);
-	    rect(x , y,  size, 50);
-	  }
+	void leftSpeed(){
+		x -= speed;
+		if(x<=0) {
+			x = 800;
+		}
+	}
+	void rightSpeed(){
+		x += speed;
+		if(x>=800) {
+			x = 0;
+		}
+	}
 }
