@@ -27,4 +27,20 @@ public class Car extends PApplet {
 			x = 0;
 		}
 	}
+
+	public int getY() {
+		// TODO Auto-generated method stub
+		return y;
+	}
+
+	public int getX() {
+		// TODO Auto-generated method stub
+		return x;
+	}
+
+	public int getSize() {
+		// TODO Auto-generated method stub
+		return size;
+	}
+	
 }
