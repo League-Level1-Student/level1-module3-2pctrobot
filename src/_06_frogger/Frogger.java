@@ -1,10 +1,16 @@
 package _06_frogger;
 
+import java.util.Random;
+
 import processing.core.PApplet;
 
 public class Frogger extends PApplet {
     static final int WIDTH = 800;
     static final int HEIGHT = 600;
+    public Random ran2 = new Random();
+    public int red = 0;
+    public int green = 0;
+    public int blue = 0;
     int frogX = 400;
     int frogY = 600;
     int points = 0;
@@ -28,27 +34,32 @@ public class Frogger extends PApplet {
 
     @Override
     public void setup() {
+        Random ran = new Random();
+        red = ran2.nextInt(255);
+        green = ran2.nextInt(255);
+        blue = ran2.nextInt(255);
         carSize = 60;
         carSpeed = 1;
-        car1 = new Car(800, 0, carSize, carSpeed);
-        car2 = new Car(700, 60, carSize, carSpeed);
-        car3 = new Car(600, 120, carSize, carSpeed);
-        car4 = new Car(500, 180, carSize, carSpeed);
-        car5 = new Car(400, 240, carSize, carSpeed);
-        car6 = new Car(300, 300, carSize, carSpeed);
-        car7 = new Car(200, 360, carSize, carSpeed);
-        car8 = new Car(100, 420, carSize, carSpeed);
-        car9 = new Car(0, 480, carSize, carSpeed);
-        car0 = new Car(300, 540, carSize, carSpeed);
+        car1 = new Car(ran.nextInt(800), 0, carSize, carSpeed);
+        car2 = new Car(ran.nextInt(800), 60, carSize, carSpeed);
+        car3 = new Car(ran.nextInt(800), 120, carSize, carSpeed);
+        car4 = new Car(ran.nextInt(800), 180, carSize, carSpeed);
+        car5 = new Car(ran.nextInt(800), 240, carSize, carSpeed);
+        car6 = new Car(ran.nextInt(800), 300, carSize, carSpeed);
+        car7 = new Car(ran.nextInt(800), 360, carSize, carSpeed);
+        car8 = new Car(ran.nextInt(800), 420, carSize, carSpeed);
+        car9 = new Car(ran.nextInt(800), 480, carSize, carSpeed);
+        car0 = new Car(ran.nextInt(800), 540, carSize, carSpeed);
     	
     }
 
     @Override
     public void draw() {
+    	
     	background(143, 127, 124);
     	fill(0, 200, 13);
     	ellipse(frogX,frogY,30,30);
-    	fill(15, 0, 148);
+    	fill(red,green,blue);
 		rect(car1.x , car1.y,  car1.size, 50);
 		rect(car2.x , car2.y,  car2.size, 50);
 		rect(car3.x , car3.y,  car3.size, 50);
@@ -59,6 +70,9 @@ public class Frogger extends PApplet {
 		rect(car8.x , car8.y,  car8.size, 50);
 		rect(car9.x , car9.y,  car9.size, 50);
 		rect(car0.x , car0.y,  car0.size, 50);
+		fill(0, 0, 0);
+        textSize(16);
+        text("Level: " + carSpeed, 20, 20);
 		car1.leftSpeed();
 		if(intersects(car1)) {
 			frogY=600;
@@ -112,7 +126,11 @@ public class Frogger extends PApplet {
 			car8.speed = carSpeed;
 			car9.speed = carSpeed;
 			car0.speed = carSpeed;
+			red = ran2.nextInt(255);
+	        green = ran2.nextInt(255);
+	        blue = ran2.nextInt(255);
 		}
+		
     }
     static public void main(String[] args) {
         PApplet.main(Frogger.class.getName());
@@ -126,8 +144,20 @@ public class Frogger extends PApplet {
             }
             else if(keyCode == UP && frogY<=30)
             {
+            	Random ran = new Random();
+            	car1 = new Car(ran.nextInt(800), 0, carSize, carSpeed);
+                car2 = new Car(ran.nextInt(800), 60, carSize, carSpeed);
+                car3 = new Car(ran.nextInt(800), 120, carSize, carSpeed);
+                car4 = new Car(ran.nextInt(800), 180, carSize, carSpeed);
+                car5 = new Car(ran.nextInt(800), 240, carSize, carSpeed);
+                car6 = new Car(ran.nextInt(800), 300, carSize, carSpeed);
+                car7 = new Car(ran.nextInt(800), 360, carSize, carSpeed);
+                car8 = new Car(ran.nextInt(800), 420, carSize, carSpeed);
+                car9 = new Car(ran.nextInt(800), 480, carSize, carSpeed);
+                car0 = new Car(ran.nextInt(800), 540, carSize, carSpeed);
                 frogY=570;
                 points+=1;
+                
             }
             else if(keyCode == DOWN && frogY<=570)
             {
@@ -149,6 +179,7 @@ public class Frogger extends PApplet {
             {
             	frogX=770;
             }
+            
         }
     }
     boolean intersects(Car car) {
