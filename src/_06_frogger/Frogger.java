@@ -129,7 +129,10 @@ public class Frogger extends PApplet {
 			red = ran2.nextInt(255);
 	        green = ran2.nextInt(255);
 	        blue = ran2.nextInt(255);
+		} else if(carSpeed>20) {
+			exit();
 		}
+		
 		
     }
     static public void main(String[] args) {
